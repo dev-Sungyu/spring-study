@@ -1,7 +1,6 @@
 server:
   port: 10000
 
-
 spring:
   datasource:
     hikari:
