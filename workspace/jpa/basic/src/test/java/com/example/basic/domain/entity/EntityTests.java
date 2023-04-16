@@ -21,7 +21,7 @@ public class EntityTests {
     private EntityManager entityManager;
 
 //    트랜잭션 영역에서만 DML을 사용할 수 있다.
-//    단위 테스트에서는 자동으로 Rollback되기 떄문에 false로 설정한다.
+//    단위 테스트에서는 자동으로 Rollback되기 때문에 false로 설정한다.
     @Test @Transactional @Rollback(false)
     public void entityTest(){
         Member memberA = new Member();
@@ -49,6 +49,7 @@ public class EntityTests {
 
 //        1차 캐시 전체 삭제
         entityManager.clear();
+
 //        1차 캐시에 조회할 엔티티가 있다면, SQL 조회 없이 1차 캐시에서 가져온다(성능 최적화).
         Member foundMember1 = entityManager.find(Member.class, 1L);
 
@@ -68,14 +69,15 @@ public class EntityTests {
 
 //        entityManager.flush();
 //        entityManager.clear();
+        
+//        영속 상태 : 1차 캐시에 등록된 상태
+//        준영속 상태 : detached instance이며, detached()를 사용하여 1차 캐시로부터 분리된 상태
+//        비영속 상태 : 1차 캐시에 등록되지 않은 상태
+//        삭제 상태 : remove()를 사용하여 1차 캐시로부터 삭제된 상태
 
-//        영속 상태: 1차 캐시에 등록된 상태
-//        비영속 상태: 1차 캐시에 등록되지 않은 상태
 //        영속 상태인 객체일 경우에만 삭제가 가능하다.
         entityManager.remove(foundMember2);
-
     }
-
 }
 
 
