@@ -20,10 +20,12 @@ public class ReviewFileDAO {
     }
 
     public Optional<ReviewFile> findById(Long id){
+//        상속관계일 경우 자식 엔티티를 조회하면 자동으로 부모 테이블과 JOIN된다.
         return Optional.ofNullable(entityManager.find(ReviewFile.class, id));
     }
 
     public List<ReviewFile> findAll(){
+//        상속관계일 경우 부모 엔티티를 조회하면 자동으로 모든 자식 테이블과 JOIN된다.
         String query = "select r from ReviewFile r";
         return entityManager.createQuery(query, ReviewFile.class).getResultList();
     }
