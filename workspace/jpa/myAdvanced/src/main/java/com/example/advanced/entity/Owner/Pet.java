@@ -3,14 +3,12 @@ package com.example.advanced.entity.Owner;
 
 import com.example.advanced.audit.Period;
 import com.example.advanced.type.PetType;
+import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Getter @Setter @ToString
@@ -19,6 +17,7 @@ public class Pet extends Period {
     @Id @GeneratedValue
     private Long id;
     private String petName;
-    private String petGender;
+    @NotNull private String petGender;
+    @Enumerated(EnumType.STRING)
     private PetType petType;
 }
