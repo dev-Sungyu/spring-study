@@ -1,13 +1,16 @@
 package com.example.expert.repository.inquire;
 
-import com.example.expert.inquiry.Answer;
-import com.example.expert.inquiry.Question;
 import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.NoResultException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -29,37 +32,37 @@ public class InquireTests {
 //          @JoinColumn을 사용하지 않아도 mappedBy로 FK를 설정한다.
 //          mappedBy를 생략하면 모든 테이블에 FK가 생긴다.
 //          RDB에서 설계할 때 N쪽에 FK를 두기 때문에
-//          FK를 필드로 가지고 있는 엔티티(PK)가 연관관계의 주인이 되어야 한다.
+//          FK를 필드로 가지고 있는 엔티티가 연관관계의 주인이 되어야 한다.
 
 //        ※ 문제 발생
 //        mappedBy를 question으로 설정했기 때문에,
 //        question_id는 Question엔티티에서 관리하게 된다.
 //        따라서 Answer엔티티에 question_id를 추가하고 싶다면,
 //        answer에 question을 넣어주어야 한다.
-//        Answer answer = new Answer();
-//        Question question = new Question();
-//
-//        answer.setAnswerContents("답변 내용1");
-//        questionDAO.save(answer);
-//
-//        question.setQuestionTitle("문의 제목1");
-//        question.setQuestionContents("문의 내용1");
-//        question.setAnswer(answer);
-//
-//        questionDAO.save(question);
-
-//        ※ 해결
         Answer answer = new Answer();
         Question question = new Question();
 
+        answer.setAnswerContents("답변 내용1");
+        questionDAO.save(answer);
+
         question.setQuestionTitle("문의 제목1");
         question.setQuestionContents("문의 내용1");
+        question.setAnswer(answer);
+
         questionDAO.save(question);
 
-        answer.setAnswerContents("답변 내용1");
-        answer.setQuestion(question);
-
-        questionDAO.save(answer);
+//        ※ 해결
+//        Answer answer = new Answer();
+//        Question question = new Question();
+//
+//        question.setQuestionTitle("문의 제목1");
+//        question.setQuestionContents("문의 내용1");
+//        questionDAO.save(question);
+//
+//        answer.setAnswerContents("답변 내용1");
+//        answer.setQuestion(question);
+//
+//        questionDAO.save(answer);
     }
 
     @Test

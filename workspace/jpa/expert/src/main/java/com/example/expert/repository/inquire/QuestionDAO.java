@@ -1,7 +1,5 @@
 package com.example.expert.repository.inquire;
 
-import com.example.expert.inquiry.Answer;
-import com.example.expert.inquiry.Question;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -21,9 +19,9 @@ public class QuestionDAO {
     }
 
 //    참조 엔티티 추가
-    public Answer save(Answer answer){
-        entityManager.persist(answer);
-        return answer;
+    public Answer save(Answer TBLAnswer){
+        entityManager.persist(TBLAnswer);
+        return TBLAnswer;
     }
 
 //    조회
@@ -40,7 +38,7 @@ public class QuestionDAO {
 
     //    참조 엔티티 조회
     public Optional<Answer> findAnswerById(Long id){
-        String query = "select a from Answer a where a.id = :id";
+        String query = "select a from Answer a where id = :id";
         return Optional.ofNullable(entityManager.createQuery(query, Answer.class).setParameter("id", id).getSingleResult());
     }
 

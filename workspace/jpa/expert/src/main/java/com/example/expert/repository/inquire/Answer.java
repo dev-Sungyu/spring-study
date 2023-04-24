@@ -1,4 +1,4 @@
-package com.example.expert.inquiry;
+package com.example.expert.repository.inquire;
 
 import com.example.expert.audit.Period;
 import lombok.Getter;
