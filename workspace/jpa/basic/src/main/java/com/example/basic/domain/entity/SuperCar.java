@@ -9,16 +9,22 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Getter @Setter @ToString
+@Getter
+@Setter
+@ToString
 @Table(name = "TBL_SUPER_CAR")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class SuperCar {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
     @Enumerated(value = EnumType.STRING)
-    @NotNull private SuperCarType type;
-    @NotNull private String name;
-    @NotNull private String color;
+    @NotNull
+    private SuperCarType type;
+    @NotNull
+    private String name;
+    @NotNull
+    private String color;
     private Double price;
     private LocalDateTime releaseDate;
 

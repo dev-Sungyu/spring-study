@@ -1,16 +1,13 @@
 package com.example.expert.repository.inquire;
 
+import com.example.expert.entity.inquire.Answer;
+import com.example.expert.entity.inquire.Question;
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Commit;
 import org.springframework.test.annotation.Rollback;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.persistence.NoResultException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,11 +17,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Rollback(false)
 public class InquireTests {
 
-    @Autowired private QuestionDAO questionDAO;
-    @Autowired private AnswerDAO answerDAO;
+    @Autowired
+    private QuestionDAO questionDAO;
+    @Autowired
+    private AnswerDAO answerDAO;
 
     @Test
-    public void saveTest(){
+    public void saveTest() {
 //        "단방향에서는
 //          INSERT 실행 시, @JoinColumn으로 설정된 객체로만 FK를 추가할 수 있다.
 //          @JoinColumn이 설정되지 않은 연관객체로는 FK를 추가할 수 없다.
@@ -39,17 +38,17 @@ public class InquireTests {
 //        question_id는 Question엔티티에서 관리하게 된다.
 //        따라서 Answer엔티티에 question_id를 추가하고 싶다면,
 //        answer에 question을 넣어주어야 한다.
-        Answer answer = new Answer();
-        Question question = new Question();
+//        Answer answer = new Answer();
+//        Question question = new Question();
 
-        answer.setAnswerContents("답변 내용1");
-        questionDAO.save(answer);
-
-        question.setQuestionTitle("문의 제목1");
-        question.setQuestionContents("문의 내용1");
-        question.setAnswer(answer);
-
-        questionDAO.save(question);
+//        answer.setAnswerContents("답변 내용1");
+//        questionDAO.save(answer);
+//
+//        question.setQuestionTitle("문의 제목1");
+//        question.setQuestionContents("문의 내용1");
+//        question.setAnswer(answer);
+//
+//        questionDAO.save(question);
 
 //        ※ 해결
 //        Answer answer = new Answer();
@@ -66,17 +65,17 @@ public class InquireTests {
     }
 
     @Test
-    public void findByIdTest(){
+    public void findByIdTest() {
         questionDAO.findById(73L).map(Question::toString).ifPresent(log::info);
     }
 
     @Test
-    public void findAllTest(){
+    public void findAllTest() {
         assertThat(questionDAO.findAll()).hasSize(1);
     }
 
     @Test
-    public void deleteTest(){
+    public void deleteTest() {
 //        단위 테스트에서는 Rollback(true)가 default이므로
 //        Rollback(false)를 설정한 뒤
 //        Transaction의 rollbackFor를 사용해도 반영되지 않는다.
@@ -85,7 +84,7 @@ public class InquireTests {
     }
 
     @Test
-    public void updateTest(){
+    public void updateTest() {
         questionDAO.findAnswerById(86L).ifPresent(answer -> answer.getQuestion().setQuestionContents("수정된 내용"));
     }
 }

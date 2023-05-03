@@ -46,48 +46,52 @@ public class SuperCarDaoTests {
 //    }
 
     @Test
-    public void findByIdTest(){
+    public void findByIdTest() {
         Optional<SuperCar> foundSuperCar = superCarDAO.findById(2L);
-        foundSuperCar.map(SuperCar::getName).ifPresentOrElse(log::info, () -> {log.info("찾으시는 차량이 없습니다.");});
+        foundSuperCar.map(SuperCar::getName).ifPresentOrElse(log::info, () -> {
+            log.info("찾으시는 차량이 없습니다.");
+        });
     }
 
     @Test
-    public void deleteTest(){
+    public void deleteTest() {
         Optional<SuperCar> foundSuperCar = superCarDAO.findById(2L);
-        superCarDAO.delete(foundSuperCar.orElseThrow(() -> {throw new NoSuchSuperCarException("찾으시는 차량이 없습니다.");}));
+        superCarDAO.delete(foundSuperCar.orElseThrow(() -> {
+            throw new NoSuchSuperCarException("찾으시는 차량이 없습니다.");
+        }));
     }
 
     @Test
-    public void updateTest(){
+    public void updateTest() {
         Optional<SuperCar> foundSuperCar = superCarDAO.findById(3L);
         foundSuperCar.ifPresent(superCar -> superCar.setColor("아쿠아마린 블루"));
         foundSuperCar.map(SuperCar::getColor).ifPresent(log::info);
     }
 
     @Test
-    public void findAllTest(){
+    public void findAllTest() {
         superCarDAO.findAll().stream().map(SuperCar::getName).forEach(log::info);
     }
 
     @Test
-    public void findAllWithPagingTest(){
+    public void findAllWithPagingTest() {
         superCarDAO.findAllWithPaging(41, 10).stream().map(SuperCar::toString).forEach(log::info);
     }
 
     @Test
-    public void findAllByReleaseDate(){
+    public void findAllByReleaseDate() {
         superCarDAO.findAllByReleaseDate("20221217").stream().map(SuperCar::toString).forEach(log::info);
     }
 
     @Test
-    public void findAllBetweenReleaseDate(){
+    public void findAllBetweenReleaseDate() {
         LocalDateTime startDate = LocalDateTime.of(2022, 12, 10, 00, 00);
         LocalDateTime endDate = LocalDateTime.of(2022, 12, 20, 23, 59);
         log.info(superCarDAO.findAllBetweenReleaseDate(startDate, endDate).size() + "건");
     }
 
     @Test
-    public void findAllByNameAndPriceTest(){
+    public void findAllByNameAndPriceTest() {
         assertThat(superCarDAO.findAllByNameAndPrice("super car87", 8700L).size()).isEqualTo(1);
     }
 
@@ -97,7 +101,7 @@ public class SuperCarDaoTests {
     }
 
     @Test
-    public void updateByReleaseDateTest(){
+    public void updateByReleaseDateTest() {
         superCarDAO.updateByReleaseDate("20221204", 10);
     }
 }

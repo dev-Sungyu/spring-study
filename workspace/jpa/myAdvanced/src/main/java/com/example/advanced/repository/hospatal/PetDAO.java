@@ -14,13 +14,13 @@ public class PetDAO {
     private EntityManager entityManager;
 
     //    추가
-    public Pet save(Pet pet){
+    public Pet save(Pet pet) {
         entityManager.persist(pet);
         return pet;
     }
 
     //    조회
-    public Optional<Pet> findById(Long id){
+    public Optional<Pet> findById(Long id) {
 //        return Optional.ofNullable(entityManager.find(Pet.class, id));
         String query = "select p from Pet p join fetch p.owner where p.id = :id";
         return Optional.ofNullable(
@@ -31,14 +31,14 @@ public class PetDAO {
     }
 
     //    전체 조회
-    public List<Pet> findAll(){
+    public List<Pet> findAll() {
 //        String query = "select p from Pet p join fetch p.owner";
         String query = "select p from Pet p inner join p.owner";
         return entityManager.createQuery(query, Pet.class).getResultList();
     }
 
     //    삭제
-    public void delete(Pet pet){
+    public void delete(Pet pet) {
         entityManager.remove(pet);
     }
 

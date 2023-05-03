@@ -12,25 +12,26 @@ import java.util.Optional;
 public class MemberDAO {
     @PersistenceContext
     private EntityManager entityManager;
-//    추가
-    public Member save(Member member){
+
+    //    추가
+    public Member save(Member member) {
         entityManager.persist(member);
         return member;
     }
 
-//    조회
-    public Optional<Member> findById(Long id){
+    //    조회
+    public Optional<Member> findById(Long id) {
         return Optional.ofNullable(entityManager.find(Member.class, id));
     }
 
-//    전체 조회
-    public List<Member> findAll(){
+    //    전체 조회
+    public List<Member> findAll() {
         String query = "select m from Member m";
         return entityManager.createQuery(query, Member.class).getResultList();
     }
 
-//    삭제
-    public void delete(Member member){
+    //    삭제
+    public void delete(Member member) {
         entityManager.remove(member);
     }
 

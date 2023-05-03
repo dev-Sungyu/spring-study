@@ -7,11 +7,14 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Getter @Setter @ToString // Entity에서는 @Data를 사용하기 보다는 직접 골라서 작성하는 것이 좋다.
+@Getter
+@Setter
+@ToString // Entity에서는 @Data를 사용하기 보다는 직접 골라서 작성하는 것이 좋다.
 @Table(name = "TBL_MEMBER")// 테이블명 작성
 @NoArgsConstructor(access = AccessLevel.PROTECTED) // 외부에서 객체 생성을 막음과 동시에, Spring에서는 사용할 수 있도록 PROTECTED로 설정한다.
 public class Member {
-    @Id @GeneratedValue // @Id는 PK로 설정할 필드 위에 작성하고, ORACLE에서 SEQ 자동 증가는 @GeneratedValue를 사용한다.
+    @Id
+    @GeneratedValue // @Id는 PK로 설정할 필드 위에 작성하고, ORACLE에서 SEQ 자동 증가는 @GeneratedValue를 사용한다.
     private Long id;
     @NotNull // JAVA에서의 Validation(DB와 상관 없음)
     private String memberName;

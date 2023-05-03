@@ -52,7 +52,7 @@ public class MemberDaoTests {
 //    }
 
     @Test
-    public void deleteTest(){
+    public void deleteTest() {
 //        Member member = new Member();
 //        member.setMemberName("한동석");
 //        member.setMemberEmail("tedhan1204@gmail.com");
@@ -65,7 +65,7 @@ public class MemberDaoTests {
     }
 
     @Test
-    public void findByIdTest(){
+    public void findByIdTest() {
         Optional<Member> optionalMember = memberDAO.findById(10L);
 //        Member member = optionalMember.orElse(new Member());
 //        Member member = optionalMember.orElseGet(Member::new);
@@ -78,28 +78,28 @@ public class MemberDaoTests {
     }
 
     @Test
-    public void findAllTest(){
+    public void findAllTest() {
         memberDAO.findAll().stream().map(Member::getMemberName).forEach(log::info);
     }
 
     @Test
-    public void findAllWithPagingTest(){
+    public void findAllWithPagingTest() {
         memberDAO.findAllWithPaging(11, 10).stream().map(Member::getMemberName).forEach(log::info);
     }
 
     @Test
-    public void findByMemberNameTest(){
+    public void findByMemberNameTest() {
 //        memberDAO.findByMemberName("user99").stream().map(Member::getMemberName).forEach(log::info);
         assertThat(memberDAO.findByMemberName("user99").stream().map(Member::getMemberAge).map(String::valueOf).collect(Collectors.joining())).isEqualTo("99");
     }
 
     @Test
-    public void deleteByMemberAgeGreaterThanEqualTest(){
+    public void deleteByMemberAgeGreaterThanEqualTest() {
         memberDAO.deleteByMemberAgeGreaterThanEqual(90);
     }
 
     @Test
-    public void updateByMemberAgeLessThanEqualTest(){
+    public void updateByMemberAgeLessThanEqualTest() {
         memberDAO.findAll();
         memberDAO.updateByMemberAgeLessThanEqual(20);
         memberDAO.findAll().stream().map(Member::getMemberType).map(Enum::toString).forEach(log::info);

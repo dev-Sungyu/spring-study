@@ -12,10 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter @Setter @ToString
+@Getter
+@Setter
+@ToString
 @Table(name = "TBL_OWNER")
 public class Owner extends Period {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
     private String ownerName;
     @Column(unique = true)

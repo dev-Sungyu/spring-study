@@ -12,12 +12,15 @@ import javax.persistence.*;
 //    복잡한 쿼리 작성 필요
 //    INSERT 작성 시 쿼리 2번 실행
 @Entity
-@Getter @Setter @ToString
+@Getter
+@Setter
+@ToString
 @Table(name = "TBL_FILE")
 @Inheritance(strategy = InheritanceType.JOINED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class File extends Period {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
     private String name;
     private String uuid;

@@ -15,27 +15,27 @@ public class ReviewFileDAO {
     @PersistenceContext
     private EntityManager entityManager;
 
-//    추가
-    public ReviewFile save(ReviewFile reviewFile){
+    //    추가
+    public ReviewFile save(ReviewFile reviewFile) {
         entityManager.persist(reviewFile);
         return reviewFile;
     }
 
-//    조회
-    public Optional<ReviewFile> findById(Long id){
+    //    조회
+    public Optional<ReviewFile> findById(Long id) {
 //        상속관계일 경우 자식 엔티티를 조회하면 자동으로 부모 테이블과 JOIN된다.
         return Optional.ofNullable(entityManager.find(ReviewFile.class, id));
     }
 
-//    전체 조회
-    public List<File> findAll(){
+    //    전체 조회
+    public List<File> findAll() {
 //        상속관계일 경우 부모 엔티티를 조회하면 자동으로 모든 자식 테이블과 JOIN된다.
         String query = "select f from File f";
         return entityManager.createQuery(query, File.class).getResultList();
     }
 
-//    삭제
-    public void delete(ReviewFile reviewFile){
+    //    삭제
+    public void delete(ReviewFile reviewFile) {
         entityManager.remove(reviewFile);
     }
 

@@ -17,7 +17,7 @@ public class OwnerDAO {
     @PersistenceContext
     EntityManager entityManager;
 
-    public Owner save(Owner owner){
+    public Owner save(Owner owner) {
         entityManager.persist(owner);
         return owner;
     }
@@ -27,25 +27,25 @@ public class OwnerDAO {
 //        return pet;
 //    }
 
-public Optional<Owner> findById(Long id){
-    String query = "select o from Owner o join fetch o.pets where o.id = :id";
-    return Optional.ofNullable(
-            entityManager
-                    .createQuery(query, Owner.class)
-                    .setParameter("id", id)
-                    .getSingleResult());
-}
+    public Optional<Owner> findById(Long id) {
+        String query = "select o from Owner o join fetch o.pets where o.id = :id";
+        return Optional.ofNullable(
+                entityManager
+                        .createQuery(query, Owner.class)
+                        .setParameter("id", id)
+                        .getSingleResult());
+    }
 
     public Optional<Pet> findReplyById(Long id) {
         return Optional.ofNullable(entityManager.find(Pet.class, id));
     }
 
-    public List<Owner> findAll(){
+    public List<Owner> findAll() {
         String query = "select o from Owner o";
         return entityManager.createQuery(query, Owner.class).getResultList();
     }
 
-    public void delete(Owner owner){
+    public void delete(Owner owner) {
         entityManager.remove(owner);
     }
 }

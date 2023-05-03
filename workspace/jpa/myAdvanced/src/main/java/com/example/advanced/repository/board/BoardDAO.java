@@ -13,21 +13,21 @@ import java.util.Optional;
 public class BoardDAO {
     @PersistenceContext
     private EntityManager entityManager;
-    
-//    게시글 추가
-    public Board save(Board board){
+
+    //    게시글 추가
+    public Board save(Board board) {
         entityManager.persist(board);
         return board;
     }
 
-//    댓글 추가
-    public Reply save(Reply reply){
+    //    댓글 추가
+    public Reply save(Reply reply) {
         entityManager.persist(reply);
         return reply;
     }
 
-//    게시글 조회
-    public Optional<Board> findById(Long id){
+    //    게시글 조회
+    public Optional<Board> findById(Long id) {
 //        return Optional.ofNullable(entityManager.find(Board.class, id));
 
 //        1:N 관계에서 한 방 쿼리를 작성하면 JOIN은 되지만,
@@ -44,24 +44,24 @@ public class BoardDAO {
         String query = "select b from Board b join fetch b.replies where b.id = :id";
         return Optional.ofNullable(
                 entityManager
-                .createQuery(query, Board.class)
-                .setParameter("id", id)
-                .getSingleResult());
+                        .createQuery(query, Board.class)
+                        .setParameter("id", id)
+                        .getSingleResult());
     }
 
-//    댓글 조회
+    //    댓글 조회
     public Optional<Reply> findReplyById(Long id) {
         return Optional.ofNullable(entityManager.find(Reply.class, id));
     }
 
-//    전체 조회
-    public List<Board> findAll(){
+    //    전체 조회
+    public List<Board> findAll() {
         String query = "select b from Board b";
         return entityManager.createQuery(query, Board.class).getResultList();
     }
 
-//    삭제
-    public void delete(Board board){
+    //    삭제
+    public void delete(Board board) {
         entityManager.remove(board);
     }
 

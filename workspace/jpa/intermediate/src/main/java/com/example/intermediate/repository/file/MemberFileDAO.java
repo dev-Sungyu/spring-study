@@ -13,26 +13,26 @@ public class MemberFileDAO {
     @PersistenceContext
     private EntityManager entityManager;
 
-//    추가
-    public MemberFile save(MemberFile memberFile){
+    //    추가
+    public MemberFile save(MemberFile memberFile) {
         entityManager.persist(memberFile);
         return memberFile;
     }
 
-//    조회
-    public Optional<MemberFile> findById(Long id){
+    //    조회
+    public Optional<MemberFile> findById(Long id) {
         return Optional.ofNullable(entityManager.find(MemberFile.class, id));
     }
 
-//    전체 조회
-    public List<MemberFile> findAll(){
+    //    전체 조회
+    public List<MemberFile> findAll() {
 //        상속관계일 경우 자식 엔티티를 조회하면 자동으로 부모 테이블과 JOIN된다.
         String query = "select m from MemberFile m";
         return entityManager.createQuery(query, MemberFile.class).getResultList();
     }
 
-//    삭제
-    public void delete(MemberFile memberFile){
+    //    삭제
+    public void delete(MemberFile memberFile) {
         entityManager.remove(memberFile);
     }
 

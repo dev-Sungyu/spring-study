@@ -20,7 +20,7 @@ public class MemberTests {
     private MemberDAO memberDAO;
 
     @Test
-    public void saveTest(){
+    public void saveTest() {
         Member member = new Member();
         Challenge challenge = new Challenge();
 
@@ -37,21 +37,19 @@ public class MemberTests {
     }
 
     @Test
-    public void findByIdTest(){
+    public void findByIdTest() {
         memberDAO.findById(1L).map(Member::toString).ifPresent(log::info);
     }
 
     @Test
-    public void findAllTest(){
+    public void findAllTest() {
         memberDAO.findAll().stream().map(Member::toString).forEach(log::info);
     }
 
     @Test
-    public void deleteTest(){
+    public void deleteTest() {
         memberDAO.findById(1L).ifPresent(memberDAO::delete);
     }
-
-
 
 
 }

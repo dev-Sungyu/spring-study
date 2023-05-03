@@ -19,7 +19,7 @@ public class ComputerRepositoryTests {
     private ComputerRepository computerRepository;
 
     @Test
-    public void saveTest(){
+    public void saveTest() {
         Hardware hardware = Hardware.builder()
                 .ram(16)
                 .ssd(1024)
@@ -40,7 +40,7 @@ public class ComputerRepositoryTests {
     }
 
     @Test
-    public void findByRamTest(){
+    public void findByRamTest() {
         computerRepository.findByRam(16).stream().map(Computer::toString).forEach(log::info);
     }
 }

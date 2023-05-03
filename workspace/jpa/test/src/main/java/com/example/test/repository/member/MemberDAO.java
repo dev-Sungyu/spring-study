@@ -14,12 +14,12 @@ public class MemberDAO {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public Member save(Member member){
+    public Member save(Member member) {
         entityManager.persist(member);
         return member;
     }
 
-    public Optional<Member> findById(Long id){
+    public Optional<Member> findById(Long id) {
         String query = "select m from Member m join fetch m.challenge where m.id = :id";
         return Optional.ofNullable(entityManager.
                 createQuery(query, Member.class).
@@ -27,12 +27,12 @@ public class MemberDAO {
                 getSingleResult());
     }
 
-    public List<Member> findAll(){
+    public List<Member> findAll() {
         String query = "select m from Member m join fetch m.challenge";
         return entityManager.createQuery(query, Member.class).getResultList();
     }
 
-    public void delete(Member member){
+    public void delete(Member member) {
         entityManager.remove(member);
     }
 

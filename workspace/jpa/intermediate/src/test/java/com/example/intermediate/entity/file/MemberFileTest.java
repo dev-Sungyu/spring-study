@@ -20,7 +20,7 @@ public class MemberFileTest {
     private MemberFileDAO memberFileDAO;
 
     @Test
-    public void saveTest(){
+    public void saveTest() {
         MemberFile memberFile = new MemberFile();
         memberFile.setName("테스트.txt");
         memberFile.setFileSize(1024L);
@@ -32,22 +32,22 @@ public class MemberFileTest {
     }
 
     @Test
-    public void findByIdTest(){
+    public void findByIdTest() {
         memberFileDAO.findById(4L).map(File::toString).ifPresent(log::info);
     }
 
     @Test
-    public void findAllTest(){
+    public void findAllTest() {
         memberFileDAO.findAll().stream().map(MemberFile::toString).forEach(log::info);
     }
 
     @Test
-    public void updateTest(){
+    public void updateTest() {
         memberFileDAO.findById(4L).ifPresent(memberFile -> memberFile.setName("수정.txt"));
     }
 
     @Test
-    public void deleteTest(){
+    public void deleteTest() {
         memberFileDAO.findById(4L).ifPresent(memberFileDAO::delete);
     }
 }

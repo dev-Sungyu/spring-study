@@ -22,7 +22,7 @@ public class ReviewFileTests {
     private ReviewFileRepository reviewFileRepository;
 
     @Test
-    public void saveTest(){
+    public void saveTest() {
         ReviewFile reviewFile = ReviewFile.builder()
                 .name("후기.png")
                 .filePath("2023/04/01")
@@ -35,7 +35,7 @@ public class ReviewFileTests {
     }
 
     @Test
-    public void findByFilePathsTest(){
+    public void findByFilePathsTest() {
         log.info(reviewFileRepository.findByFilePaths(new ArrayList<String>(Arrays.asList("2023/04/01", "2023/04/02"))).toString());
     }
 }

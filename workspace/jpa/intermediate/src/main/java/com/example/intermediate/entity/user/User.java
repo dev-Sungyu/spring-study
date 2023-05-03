@@ -12,17 +12,23 @@ import javax.persistence.*;
 //     자식 테이블끼리 JOIN시 겹치는 컬럼으로 인해 조회 성능이 떨어지고 쿼리가 복잡해진다.
 
 @Entity
-@Getter @Setter @ToString
+@Getter
+@Setter
+@ToString
 @Table(name = "TBL_USER")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public abstract class User extends Period { // 부모 클래스를 단독으로 사용하지 않는다면, abstract로 만든다.
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
     @Column(unique = true)
-    @NotNull private String userId;
-    @NotNull private String password;
-    @NotNull private String name;
+    @NotNull
+    private String userId;
+    @NotNull
+    private String password;
+    @NotNull
+    private String name;
     private String address;
 
     public User(String userId, String password, String name, String address) {

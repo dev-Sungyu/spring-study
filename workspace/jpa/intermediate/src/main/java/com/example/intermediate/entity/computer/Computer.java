@@ -8,20 +8,29 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Getter @Setter @ToString
+@Getter
+@Setter
+@ToString
 @Table(name = "TBL_COMPUTER")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Computer extends Period {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
-    @NotNull private Integer screen;
-    @NotNull private String brand;
-    @NotNull private String name;
-    @NotNull private Integer price;
-    @NotNull private LocalDateTime releaseDate;
+    @NotNull
+    private Integer screen;
+    @NotNull
+    private String brand;
+    @NotNull
+    private String name;
+    @NotNull
+    private Integer price;
+    @NotNull
+    private LocalDateTime releaseDate;
     @Embedded
-    @NotNull private Hardware hardware;
+    @NotNull
+    private Hardware hardware;
 
     @Builder
     public Computer(Integer screen, String brand, String name, Integer price, LocalDateTime releaseDate, Hardware hardware) {

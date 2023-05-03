@@ -10,15 +10,22 @@ import lombok.ToString;
 import javax.persistence.*;
 
 @Entity
-@Getter @Setter @ToString
+@Getter
+@Setter
+@ToString
 @Table(name = "TBL_MEMBER")
 public class Member extends Period {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
-    @NotNull private String email;
-    @NotNull private String password;
+    @NotNull
+    private String email;
+    @NotNull
+    private String password;
     @Column(unique = true)
-    @NotNull private String phoneNumber;
-    @NotNull private String name;
+    @NotNull
+    private String phoneNumber;
+    @NotNull
+    private String name;
     private String status;
 }

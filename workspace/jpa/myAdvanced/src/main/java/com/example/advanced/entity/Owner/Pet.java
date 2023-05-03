@@ -11,13 +11,17 @@ import lombok.ToString;
 import javax.persistence.*;
 
 @Entity
-@Getter @Setter @ToString
+@Getter
+@Setter
+@ToString
 @Table(name = "TBL_PET")
 public class Pet extends Period {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
     private String petName;
-    @NotNull private String petGender;
+    @NotNull
+    private String petGender;
     @Enumerated(EnumType.STRING)
     private PetType petType;
 }

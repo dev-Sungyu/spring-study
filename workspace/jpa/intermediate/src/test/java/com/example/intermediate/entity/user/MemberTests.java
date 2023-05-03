@@ -20,7 +20,7 @@ public class MemberTests {
     private MemberDAO memberDAO;
 
     @Test
-    public void saveTest(){
+    public void saveTest() {
         Member member = new Member();
         member.setName("한동석");
         member.setUserId("hds1234");
@@ -32,7 +32,7 @@ public class MemberTests {
     }
 
     @Test
-    public void findByIdTest(){
+    public void findByIdTest() {
         memberDAO.findById(3L).map(User::toString).ifPresent(log::info);
     }
 
@@ -42,12 +42,12 @@ public class MemberTests {
     }
 
     @Test
-    public void updateTest(){
+    public void updateTest() {
         memberDAO.findById(3L).ifPresent(member -> member.setName("홍길동"));
     }
 
     @Test
-    public void deleteTest(){
+    public void deleteTest() {
         memberDAO.findById(3L).ifPresent(memberDAO::delete);
     }
 }

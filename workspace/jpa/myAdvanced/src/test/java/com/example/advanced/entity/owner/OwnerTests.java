@@ -22,7 +22,7 @@ public class OwnerTests {
     OwnerDAO ownerDAO;
 
     @Test
-    public void saveTest(){
+    public void saveTest() {
         Owner owner = new Owner();
         Pet pet = new Pet();
 
@@ -38,23 +38,23 @@ public class OwnerTests {
     }
 
     @Test
-    public void findByIdTest(){
+    public void findByIdTest() {
         ownerDAO.findById(1L).map(Owner::toString).ifPresent(log::info);
     }
 
     @Test
-    public void findAllTest(){
+    public void findAllTest() {
         ownerDAO.findAll().stream().map(Owner::toString).forEach(log::info);
     }
 
     @Test
-    public void updateTest(){
+    public void updateTest() {
 //        boardDAO.findById(3L).ifPresent(board -> board.setBoardTitle("수정된 제목"));
         ownerDAO.findById(1L).ifPresent(owner -> owner.getPets().get(0).setPetName("부숨이"));
     }
 
     @Test
-    public void deleteTest(){
+    public void deleteTest() {
         ownerDAO.findById(1L).ifPresent(ownerDAO::delete);
     }
 }

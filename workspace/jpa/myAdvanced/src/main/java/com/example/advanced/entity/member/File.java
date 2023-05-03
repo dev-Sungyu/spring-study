@@ -11,13 +11,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Getter @Setter @ToString
+@Getter
+@Setter
+@ToString
 @Table(name = "TBL_FILE")
 public class File {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
     private String fileName;
-    @NotNull private String filePath;
-    @NotNull private String fileUuid;
+    @NotNull
+    private String filePath;
+    @NotNull
+    private String fileUuid;
     private String fileSize;
 }

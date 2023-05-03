@@ -1,6 +1,5 @@
 package com.example.advanced.entity.member;
 
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -8,7 +7,9 @@ import lombok.ToString;
 import javax.persistence.Embeddable;
 
 @Embeddable
-@Getter @Setter @ToString
+@Setter
+@Getter
+@ToString
 public class MemberAddress {
     private String memberAddress;
     private String memberAddressDetail;

@@ -15,15 +15,22 @@ import java.util.List;
 // Type: 엔티티 이름
 // Id: PK 자료형
 public interface MemberRepository extends JpaRepository<Member, Long> {
-//    쿼리 메소드
+    //    쿼리 메소드
 //     메소드 이름으로 쿼리를 생성할 수 있다.
     public List<Member> findByMemberName(String memberName);
+
     public List<Member> findByMemberNameContaining(String memberName);
+
     public List<Member> findByMemberNameStartingWith(String memberName);
+
     public List<Member> findByMemberNameEndingWith(String memberName);
+
     public List<Member> findTop2ByMemberAgeGreaterThanEqualOrderByMemberAgeDesc(int memberAge);
+
     public Boolean existsByMemberAge(int memberAge);
+
     public int countAllByMemberType(MemberType memberType);
+
     public void deleteByMemberAgeGreaterThanEqual(int memberAge);
 }
 

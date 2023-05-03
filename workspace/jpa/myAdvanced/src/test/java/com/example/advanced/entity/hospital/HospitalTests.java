@@ -23,17 +23,17 @@ public class HospitalTests {
     private PetDAO petDAO;
 
     @Test
-    public void saveTest(){
+    public void saveTest() {
         String[] arDisease = {"감기", "배탈", "방광염", "설사", "피부병"};
 
-        for (int i=0; i<10; i++){
+        for (int i = 0; i < 10; i++) {
             Owner owner = new Owner();
             Pet pet = new Pet();
 
             owner.setOwnerName("정세인");
             owner.setOwnerPhone("0101234123" + i);
 
-            pet.setPetName("뽀삐" + (i+1));
+            pet.setPetName("뽀삐" + (i + 1));
 //            pet.setPetGender(GenderType.MALE);
 //            pet.setPetDisease(arDisease[new Random().nextInt(arDisease.length)]);
             pet.setOwner(owner);
@@ -43,7 +43,7 @@ public class HospitalTests {
     }
 
     @Test
-    public void findById(){
+    public void findById() {
 //        petDAO.findById(1L).map(Pet::toString).ifPresent(log::info);
 
 
@@ -58,10 +58,9 @@ public class HospitalTests {
     }
 
     @Test
-    public void findAll(){
+    public void findAll() {
         petDAO.findAll().stream().map(Pet::toString).forEach(log::info);
     }
-
 
 
 }

@@ -20,7 +20,7 @@ public class SuperCarRepositoryTest {
     private SuperCarRepository superCarRepository;
 
     @Test
-    public void saveTest(){
+    public void saveTest() {
         SuperCar superCar = SuperCar.builder()
                 .name("아벤타도르")
                 .color("핑크색")
@@ -33,7 +33,7 @@ public class SuperCarRepositoryTest {
     }
 
     @Test
-    public void findByTypeLikeTest(){
+    public void findByTypeLikeTest() {
         superCarRepository.findByNameLike("%아%").stream().map(SuperCar::toString).forEach(log::info);
     }
 }

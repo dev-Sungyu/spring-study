@@ -14,13 +14,13 @@ public abstract class Period {
     private LocalDateTime updatedDate;
 
     @PrePersist
-    public void create(){
+    public void create() {
         this.createdDate = LocalDateTime.now();
         this.updatedDate = LocalDateTime.now();
     }
 
     @PreUpdate
-    public void update(){
+    public void update() {
         this.updatedDate = LocalDateTime.now();
     }
 }

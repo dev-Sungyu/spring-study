@@ -17,7 +17,7 @@ public class BoardTests {
     private BoardDAO boardDAO;
 
     @Test
-    public void saveTest(){
+    public void saveTest() {
         Board board = new Board();
         Reply reply1 = new Reply();
         Reply reply2 = new Reply();
@@ -53,7 +53,7 @@ public class BoardTests {
     }
 
     @Test
-    public void findByIdTest(){
+    public void findByIdTest() {
 //        boardDAO.findById(3L).map(Board::toString).ifPresent(log::info);
 //        boardDAO.findById(3L).ifPresent(board -> board.getReplies().get(0));
 //        boardDAO.findById(3L).map(Board::toString).ifPresent(log::info);
@@ -61,18 +61,18 @@ public class BoardTests {
     }
 
     @Test
-    public void findAllTest(){
+    public void findAllTest() {
         boardDAO.findAll().stream().map(Board::toString).forEach(log::info);
     }
 
     @Test
-    public void updateTest(){
+    public void updateTest() {
 //        boardDAO.findById(3L).ifPresent(board -> board.setBoardTitle("수정된 제목"));
         boardDAO.findById(3L).ifPresent(board -> board.getReplies().get(0).setReplyContent("수정된 댓글 내용1"));
     }
 
     @Test
-    public void deleteTest(){
+    public void deleteTest() {
         boardDAO.findById(3L).ifPresent(boardDAO::delete);
     }
 }

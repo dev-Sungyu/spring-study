@@ -7,11 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Getter @Setter @ToString(callSuper = true)
+@Getter
+@Setter
+@ToString(callSuper = true)
 @Table(name = "TBL_MEMBER")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Member extends User{
-    @NotNull private String socialSecurityNumber;
+public class Member extends User {
+    @NotNull
+    private String socialSecurityNumber;
 
     @Builder
     public Member(String userId, String password, String name, String address, String socialSecurityNumber) {

@@ -21,7 +21,7 @@ public class MemberRepositoryTests {
     private MemberRepository memberRepository;
 
     @Test
-    public void saveTest(){
+    public void saveTest() {
         Member member1 = Member.builder()
                 .name("한동석")
                 .userId("hds1234")
@@ -42,7 +42,7 @@ public class MemberRepositoryTests {
     }
 
     @Test
-    public void updateAllByAddressTest(){
+    public void updateAllByAddressTest() {
         memberRepository.updateAllByAddress("경기도");
         memberRepository.findById(110L).ifPresent(member -> log.info(member.toString()));
     }

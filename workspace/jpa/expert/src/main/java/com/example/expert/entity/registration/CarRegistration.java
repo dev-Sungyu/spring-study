@@ -1,18 +1,19 @@
 package com.example.expert.entity.registration;
 
 import com.example.expert.audit.Period;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 
 @Entity
-@Getter @Setter @ToString
+@Getter
+@Setter
+@ToString
 @Table(name = "TBL_CAR_REGISTRATION")
 public class CarRegistration extends Period {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
 

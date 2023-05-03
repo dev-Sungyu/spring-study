@@ -11,13 +11,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter @Setter @ToString
+@Getter
+@Setter
+@ToString
 @Table(name = "TBL_BOARD")
 public class Board extends Period {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
-    @NotNull private String boardTitle;
-    @NotNull private String boardContent;
+    @NotNull
+    private String boardTitle;
+    @NotNull
+    private String boardContent;
 
 //    fetch
 //     연관관계를 맺고 있는 경우,
@@ -32,8 +37,8 @@ public class Board extends Period {
 //     엔티티가 영속상태로 전환될 때 참조 엔티티도 영속상태로 같이 전환되고,
 //     삭제상태로 전환될 때도 참조 엔티티까지 삭제상태로 전환된다.
 //     즉, 연관관계 객체에도 영속 상태를 전이하고 싶을 때 사용하는 옵션이다.
-    
-//    @OneToMany일 경우 fetch의 기본 옵션이 LAZY이다.
+
+    //    @OneToMany일 경우 fetch의 기본 옵션이 LAZY이다.
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     @JoinColumn(name = "BOARD_ID")
     List<Reply> replies = new ArrayList<>();

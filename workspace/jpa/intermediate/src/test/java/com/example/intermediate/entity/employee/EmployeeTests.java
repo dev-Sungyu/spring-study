@@ -24,7 +24,7 @@ public class EmployeeTests {
     private EmployeeDAO employeeDAO;
 
     @Test
-    public void saveTest(){
+    public void saveTest() {
         Developer developer = new Developer();
         Planner planner = new Planner();
 
@@ -45,22 +45,22 @@ public class EmployeeTests {
     }
 
     @Test
-    public void findByIdTest(){
+    public void findByIdTest() {
         employeeDAO.findById(1L).ifPresent(employee -> log.info(employee.toString()));
     }
 
     @Test
-    public void findAllTest(){
+    public void findAllTest() {
         assertThat(employeeDAO.findAll().size()).isEqualTo(1);
     }
 
     @Test
-    public void deleteTest(){
+    public void deleteTest() {
         employeeDAO.findById(1L).ifPresent(employeeDAO::delete);
     }
 
     @Test
-    public void updateTest(){
+    public void updateTest() {
         employeeDAO.findById(2L).ifPresent(employee -> employee.setName("이순신"));
     }
 

@@ -21,7 +21,7 @@ public class ReviewFileTest {
     private ReviewFileDAO reviewFileDAO;
 
     @Test
-    public void saveTest(){
+    public void saveTest() {
         ReviewFile reviewFile = new ReviewFile();
         reviewFile.setName("리뷰파일.txt");
         reviewFile.setFilePath("2023/04/18");
@@ -33,25 +33,25 @@ public class ReviewFileTest {
     }
 
     @Test
-    public void findByIdTest(){
+    public void findByIdTest() {
         reviewFileDAO.findById(21L)
                 .ifPresentOrElse(
                         reviewFile -> log.info(reviewFile.getName()),
-                                () -> log.info("존재하지 않는 파일입니다."));
+                        () -> log.info("존재하지 않는 파일입니다."));
     }
 
     @Test
-    public void findAllTest(){
+    public void findAllTest() {
         reviewFileDAO.findAll().stream().map(File::toString).forEach(log::info);
     }
 
     @Test
-    public void updateTest(){
+    public void updateTest() {
         reviewFileDAO.findById(21L).ifPresent(reviewFile -> reviewFile.setName("수정.txt"));
     }
 
     @Test
-    public void deleteTest(){
+    public void deleteTest() {
         reviewFileDAO.findById(21L).ifPresent(reviewFileDAO::delete);
     }
 

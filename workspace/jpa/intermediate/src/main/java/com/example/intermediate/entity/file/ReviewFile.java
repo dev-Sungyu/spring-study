@@ -6,12 +6,14 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Getter @Setter @ToString(callSuper = true)
+@Getter
+@Setter
+@ToString(callSuper = true)
 @Table(name = "TBL_REVIEW_FILE")
 @PrimaryKeyJoinColumn(name = "REVIEW_ID")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ReviewFile extends File{
-//    이미지 검사
+public class ReviewFile extends File {
+    //    이미지 검사
     @Enumerated(EnumType.STRING)
     FileType fileType;
 

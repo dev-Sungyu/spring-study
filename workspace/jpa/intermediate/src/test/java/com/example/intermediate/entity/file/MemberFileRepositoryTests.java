@@ -22,7 +22,7 @@ public class MemberFileRepositoryTests {
     private MemberFileRepository memberFileRepository;
 
     @Test
-    public void saveTest(){
+    public void saveTest() {
         MemberFile memberFile1 = MemberFile.builder()
                 .name("a.txt")
                 .uuid(UUID.randomUUID().toString())
@@ -43,7 +43,7 @@ public class MemberFileRepositoryTests {
     }
 
     @Test
-    public void findAllByFileNamesTest(){
+    public void findAllByFileNamesTest() {
         log.info(memberFileRepository.findAllByFileNames(new ArrayList<>(Arrays.asList("a.txt", "b.png"))).toString());
     }
 }

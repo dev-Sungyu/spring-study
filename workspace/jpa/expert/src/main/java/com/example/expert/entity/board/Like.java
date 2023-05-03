@@ -1,19 +1,19 @@
 package com.example.expert.entity.board;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Getter @Setter @ToString(exclude = "board")
+@Getter
+@Setter
+@ToString(exclude = "board")
 @Table(name = "TBL_LIKE")
 public class Like {
-//    좋아요 번호
+    //    좋아요 번호
     @EqualsAndHashCode.Include
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)

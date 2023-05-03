@@ -12,12 +12,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Getter @Setter @ToString
+@Getter
+@Setter
+@ToString
 @Table(name = "TBL_REPLY")
 public class Reply extends Period {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
-    @NotNull private String replyContent;
+    @NotNull
+    private String replyContent;
 }
 
 

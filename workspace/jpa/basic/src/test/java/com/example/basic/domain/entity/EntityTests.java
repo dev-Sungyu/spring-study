@@ -20,10 +20,12 @@ public class EntityTests {
     @PersistenceContext
     private EntityManager entityManager;
 
-//    트랜잭션 영역에서만 DML을 사용할 수 있다.
+    //    트랜잭션 영역에서만 DML을 사용할 수 있다.
 //    단위 테스트에서는 자동으로 Rollback되기 때문에 false로 설정한다.
-    @Test @Transactional @Rollback(false)
-    public void entityTest(){
+    @Test
+    @Transactional
+    @Rollback(false)
+    public void entityTest() {
         Member memberA = new Member();
         Member memberB = new Member();
 
@@ -69,7 +71,7 @@ public class EntityTests {
 
 //        entityManager.flush();
 //        entityManager.clear();
-        
+
 //        영속 상태 : 1차 캐시에 등록된 상태
 //        준영속 상태 : detached instance이며, detached()를 사용하여 1차 캐시로부터 분리된 상태
 //        비영속 상태 : 1차 캐시에 등록되지 않은 상태

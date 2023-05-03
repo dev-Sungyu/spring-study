@@ -20,7 +20,7 @@ public class BusinessRepositoryTests {
     private BusinessRepository businessRepository;
 
     @Test
-    public void saveTest(){
+    public void saveTest() {
         Business business1 = Business.builder()
                 .businessNumber("2314411")
                 .address("경기도")
@@ -41,8 +41,36 @@ public class BusinessRepositoryTests {
     }
 
     @Test
-    public void updateUserIdByAddressTest(){
+    public void updateUserIdByAddressTest() {
         businessRepository.updateUserIdByAddress("경기도");
         businessRepository.findAll().stream().map(Business::toString).forEach(log::info);
     }
+
+    @Test
+    public void updateTest() {
+        businessRepository.findById(112L).ifPresent(business -> business.setPassword("8888"));
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

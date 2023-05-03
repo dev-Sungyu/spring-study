@@ -10,13 +10,18 @@ import lombok.ToString;
 import javax.persistence.*;
 
 @Entity
-@Getter @Setter @ToString
+@Getter
+@Setter
+@ToString
 @Table(name = "TBL_CHALLENGE")
 public class Challenge extends Period {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long challengeId;
-    @NotNull private String challengeTitle;
-    @NotNull private String challengeContent;
+    @NotNull
+    private String challengeTitle;
+    @NotNull
+    private String challengeContent;
     private String challengeStatus;
 
     @ManyToOne(fetch = FetchType.LAZY)

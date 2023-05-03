@@ -10,13 +10,18 @@ import javax.persistence.Embeddable;
 //     그룹화된 필드는 따로 사용하지 않고 한 번에 사용하는 목적으로 설계한다.
 
 @Embeddable
-@Getter @ToString
+@Getter
+@ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Hardware {
-    @NotNull private Integer ram;
-    @NotNull private Integer ssd; //기본 단위 GB
-    @NotNull private String gpu;
-    @NotNull private String processor;
+    @NotNull
+    private Integer ram;
+    @NotNull
+    private Integer ssd; //기본 단위 GB
+    @NotNull
+    private String gpu;
+    @NotNull
+    private String processor;
 
     @Builder
     public Hardware(Integer ram, Integer ssd, String gpu, String processor) {

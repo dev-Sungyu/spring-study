@@ -25,7 +25,7 @@ public class MemberRepositoryTests {
     private MemberRepository memberRepository;
 
     @Test
-    public void saveTest(){
+    public void saveTest() {
         Member member1 = Member.builder()
                 .memberName("한동석")
                 .memberAge(20)
@@ -64,54 +64,54 @@ public class MemberRepositoryTests {
     }
 
     @Test
-    public void findByIdTest(){
+    public void findByIdTest() {
         memberRepository.findById(101L).ifPresent(member -> log.info(member.getMemberName()));
     }
 
     @Test
-    public void findAllTest(){
+    public void findAllTest() {
         assertThat(memberRepository.findAll()).hasSize(4);
     }
 
     @Test
-    public void findByMemberNameTest(){
+    public void findByMemberNameTest() {
         memberRepository.findByMemberName("이순신").stream().map(Member::toString).forEach(log::info);
     }
 
     @Test
-    public void findByMemberNameContainingTest(){
+    public void findByMemberNameContainingTest() {
         assertThat(memberRepository.findByMemberNameContaining("동")).hasSize(2);
     }
 
     @Test
-    public void findByMemberNameStartingWithTest(){
+    public void findByMemberNameStartingWithTest() {
         assertThat(memberRepository.findByMemberNameStartingWith("홍")).hasSize(1);
     }
 
     @Test
-    public void findByMemberNameEndingWithTest(){
+    public void findByMemberNameEndingWithTest() {
         assertThat(memberRepository.findByMemberNameEndingWith("고")).hasSize(1);
     }
 
     @Test
-    public void findTop2ByMemberAgeGreaterThanEqualOrderByMemberAgeDescTest(){
+    public void findTop2ByMemberAgeGreaterThanEqualOrderByMemberAgeDescTest() {
         memberRepository
                 .findTop2ByMemberAgeGreaterThanEqualOrderByMemberAgeDesc(20)
                 .stream().map(Member::toString).forEach(log::info);
     }
 
     @Test
-    public void existsByMemberAgeTest(){
+    public void existsByMemberAgeTest() {
         assertThat(memberRepository.existsByMemberAge(18)).isTrue();
     }
 
     @Test
-    public void countAllByMemberTypeTest(){
+    public void countAllByMemberTypeTest() {
         assertThat(memberRepository.countAllByMemberType(MemberType.MEMBER)).isEqualTo(2);
     }
 
     @Test
-    public void deleteByMemberAgeGreaterThanEqualTest(){
+    public void deleteByMemberAgeGreaterThanEqualTest() {
         memberRepository.deleteByMemberAgeGreaterThanEqual(20);
     }
 }
